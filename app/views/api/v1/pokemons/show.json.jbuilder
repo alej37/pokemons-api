@@ -10,5 +10,5 @@ json.extract! @pokemon,
   :sp_attack,
   :sp_defense,
   :speed,
-  :genereation,
+  :generation,
   :legendary

@@ -11,6 +11,6 @@ json.array! @pokemons do |pokemon|
   :sp_attack,
   :sp_defense,
   :speed,
-  :genereation,
+  :generation,
   :legendary
 end
