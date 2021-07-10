@@ -9,23 +9,23 @@ sleep(3)
 
 
 filepath = './db/pokemon.csv'
-csv_options = {headers: :first_row, header_converters: :symbol}
+csv_options = { headers: :first_row}
 
 CSV.foreach(filepath, csv_options) do |row|
   pokemon = Pokemon.new
 
-  pokemon.name = row[:name]
-  pokemon.type_one = row[:type_one]
-  pokemon.type_two = row[:type_two]
-  pokemon.total = row[:total]
-  pokemon.hp = row[:hp]
-  pokemon.attack = row[:attack]
-  pokemon.defense = row[:defense]
-  pokemon.sp_attack = row[:sp_attack]
-  pokemon.sp_defense = row[:sp_defense]
-  pokemon.speed = row[:speed]
-  pokemon.generation = row[:generation]
-  pokemon.legendary = row[:legendary]
+  pokemon.name = row['Name']
+  pokemon.type_one = row["Type 1"]
+  pokemon.type_two = row["Type 2"]
+  pokemon.total = row["Total"]
+  pokemon.hp = row["HP"]
+  pokemon.attack = row["Attack"]
+  pokemon.defense = row["Defense"]
+  pokemon.sp_attack = row["Sp. Atk"]
+  pokemon.sp_defense = row["Sp. Def"]
+  pokemon.speed = row["Speed"]
+  pokemon.generation = row["Generation"]
+  pokemon.legendary = row["Legendary"]
 
   if pokemon.save
     puts "You've caught: #{pokemon.name}!"
