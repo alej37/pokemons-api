@@ -1,5 +1,5 @@
-json.array @pokemons do |pokemon|
-  json.extract pokemon, 
+json.array! @pokemons do |pokemon|
+  json.extract! pokemon, 
   :id, 
   :name, 
   :type_one, 
