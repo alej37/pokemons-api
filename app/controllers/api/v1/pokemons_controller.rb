@@ -2,11 +2,12 @@ class Api::V1::PokemonsController < ActionController::API
   before_action :set_pokemon, only: [ :show, :update, :destroy ]
 
   def index
-    @pokemons = Pokemon.all
+    @pokemons = Kaminari.paginate_array(Pokemon.all).page(params[:page]).per(10)
   end
 
   def show
     return render plain: 'Pokemon Not Found, Please try a different one', status: 404 unless (@pokemon = set_pokemon)
+    
   end
 
   def create
@@ -25,7 +26,7 @@ class Api::V1::PokemonsController < ActionController::API
   def update
     return render plain: 'Pokemon Not Found, Please try a different one', status: 404 unless (@pokemon = set_pokemon)
 
-    if pokemon.update(pokemon_params)
+    if @pokemon.update(pokemon_params)
       status = "Your Pokemon has been updated!"
     else 
       render_error
@@ -37,8 +38,8 @@ class Api::V1::PokemonsController < ActionController::API
   def destroy
     return render plain: 'Pokemon Not Found, Please try a different one', status: 404 unless (@pokemon = set_pokemon)
 
-    if pokemon.delete
-      status = "Pokemon: #{pokemon.name} is no longer in existance"
+    if @pokemon.delete
+      status = "Pokemon: #{@pokemon.name} is no longer in existance"
     else
       status = "Sorry, this pokemon cannot be destroyed"
     end
