@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Installation Procedure:
 
-Things you may want to cover:
+ - gh repo clone alej37/pokemons-api
+ - cd pokemons-api
+ - bundle
 
-* Ruby version
 
-* System dependencies
+Preparing the database:
 
-* Configuration
+  - rails db:migrate
+  - rails db:seed
 
-* Database creation
 
-* Database initialization
+Run server:
 
-* How to run the test suite
+  - rails s
+  - http://localhost:3000/api/v1/pokemons?page=1 (URL for postman testing)
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+Testing:
 
-* ...
+  - rspec spec/api/controller/pokemons_controller_spec.rb
+
